@@ -9,9 +9,13 @@ import {
 import styles from './styles/app.css';
 import favicon from '../public/favicon.svg';
 
+import tailwind from './styles/tailwind-build.css';
+import {Layout} from './components/Layout';
+
 export const links = () => {
   return [
     {rel: 'stylesheet', href: styles},
+    {rel: 'stylesheet', href: tailwind},
     {
       rel: 'preconnect',
       href: 'https://cdn.shopify.com',
@@ -48,7 +52,9 @@ export default function App() {
       <body>
         <h1>Hello, {name}</h1>
         <p>This is a custom storefront powered by Hydrogen</p>
-        <Outlet />
+        <Layout title={name}>
+          <Outlet />
+        </Layout>
         <ScrollRestoration />
         <Scripts />
       </body>
